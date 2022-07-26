@@ -8,11 +8,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.function.Supplier;
 
@@ -85,5 +83,36 @@ public class DummyControllerTest {
 
 
         return "회원가입 완료";
+    }
+
+    @Transactional //save 사용 x
+    @PutMapping("/dummy/user/{id}")
+    public User updateUser(@PathVariable int id, @RequestBody User  requestUser) { //json 데이터를 자바 객체로 변환해서 받아줌 MessageConvertor가 Jackson라이브러리가 변환
+        System.out.println("id = " + id);
+        System.out.println("password = " + requestUser.getPassword());
+        System.out.println("email = "+ requestUser.getEmail());
+
+
+        /* save로 업데이트
+        save()는 idx -> insert id O -> 테이블 안에 아이디가 있으면 update(없으면 다시 insert)
+        User user = userRepository.findById(id).orElseThrow(()->{ //db에서 받아온 유저
+            return new IllegalArgumentException("수정에 실패");
+        });
+        user.setPassword(requestUser.getPassword());
+        user.setEmail(requestUser.getEmail());
+
+        userRepository.save(user);*/
+
+        /*requestUser.setId(id); //username이 null이다 어케 해결?
+        requestUser.setUsername("modified");*/
+     /*   userRepository.save(requestUser); //insert와 같다 save시 아이디 값이 이미 테이블에 있다면 update다*/
+
+
+        /*
+        * 더티 체킹
+        * 
+        *
+        * */
+        return null;
     }
 }
