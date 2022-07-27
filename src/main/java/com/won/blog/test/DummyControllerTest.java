@@ -85,12 +85,29 @@ public class DummyControllerTest {
         return "회원가입 완료";
     }
 
+    //삭제
+    @DeleteMapping("/dummy/user/{id}")
+    public String delete(@PathVariable int id) {
+        try {
+            userRepository.deleteById(id);
+        }catch (Exception e){
+            return "삭제 실패";
+        }
+
+        return "삭제 되었습니다. id: "+id;
+    }
+
     @Transactional //save 사용 x
     @PutMapping("/dummy/user/{id}")
     public User updateUser(@PathVariable int id, @RequestBody User  requestUser) { //json 데이터를 자바 객체로 변환해서 받아줌 MessageConvertor가 Jackson라이브러리가 변환
         System.out.println("id = " + id);
         System.out.println("password = " + requestUser.getPassword());
         System.out.println("email = "+ requestUser.getEmail());
+        User user = userRepository.findById(id).orElseThrow(()->{ //db에서 받아온 유저
+            return new IllegalArgumentException("수정에 실패");
+        });
+        user.setPassword(requestUser.getPassword());
+        user.setEmail(requestUser.getEmail());
 
 
         /* save로 업데이트
@@ -110,9 +127,9 @@ public class DummyControllerTest {
 
         /*
         * 더티 체킹
-        * 
+        *
         *
         * */
-        return null;
+        return user;
     }
 }
