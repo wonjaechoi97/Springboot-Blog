@@ -27,7 +27,7 @@ public class User {
     @GeneratedValue(strategy =  GenerationType.IDENTITY) //프로젝트에서 연결된 db의 넘버링 전략을 따라간다. mysql:auto incre
     private int id;//auto increment                      //yml 파일의 jpa use-new-id-generator-mappings: false
                                                         //jpa의 기본 넘버링 전략 사용 안함
-    @Column(nullable = false, length = 30)
+    @Column(nullable = false, length = 30, unique = true) //unique 제약
     private String username; //아이디
 
     @Column(nullable = false, length = 100) // 암호화해서 넣을 것이기 때문에 넉넉히 100
