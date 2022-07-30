@@ -1,2 +1,14 @@
-package com.won.blog.dto;public class ResponseDto {
+package com.won.blog.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.http.HttpStatus;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class ResponseDto<T> {
+    HttpStatus status;
+    T data;
 }
