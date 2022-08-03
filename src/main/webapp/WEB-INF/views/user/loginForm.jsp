@@ -8,7 +8,7 @@
           <input type="text" class="form-control" placeholder="Enter username" id="username">
       </div>
       <div class="form-group">
-        <label for="passwrod">Password:</label>
+        <label for="password">Password:</label>
         <input type="password" class="form-control" placeholder="Enter password" id="password">
       </div>
       <div class="form-group form-check">
@@ -20,7 +20,7 @@
       <button id="btn-login" class="btn btn-primary">로그인</button>
 
 </div>
-<script src="/blog/js/user.js"/>
+<script src="/js/user.js"/>
 <%@ include file = "../layout/footer.jsp"%>
 
 

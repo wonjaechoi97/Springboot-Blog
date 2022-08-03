@@ -20,7 +20,7 @@
     <button id="btn-save"class="btn btn-primary">회원가입</button>
 
 </div>
-<script src="/blog/js/user.js"/> <!--"/"면 바로 static 찾아감-->
+<script src="/js/user.js"/> <!--"/"면 바로 static 찾아감-->
 <%@ include file = "../layout/footer.jsp"%>
 
 
