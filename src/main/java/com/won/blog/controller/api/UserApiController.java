@@ -31,7 +31,7 @@ public class UserApiController {
         return new ResponseDto<Integer>(HttpStatus.OK.value(), 1); //자바 오브젝트를 JSON으로 변환해서 리턴
     }
 
-    @PostMapping("/api/user/login")
+    /*@PostMapping("/api/user/login")
     public ResponseDto<Integer> login(@RequestBody User user, HttpSession session) {
         System.out.println("UserApiController : login 호출됨");
         User principal = userService.login(user);//principal(접근 주체)
@@ -40,5 +40,5 @@ public class UserApiController {
         }
         return new ResponseDto<Integer>(HttpStatus.OK.value(), 1); //자바 오브젝트를 JSON으로 변환해서 리턴
 
-    }
+    }*/
 }
