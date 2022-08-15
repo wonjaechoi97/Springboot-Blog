@@ -3,7 +3,7 @@
 
 ## Spring boot
 
-## JSP
+## JSP(or thymeleaf)
 
 ## MySQL
 
