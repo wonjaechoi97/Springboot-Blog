@@ -6,9 +6,8 @@
 ## JSP(or thymeleaf)
 
 ## MySQL
-
-## JPA
-  - hibernate
+  - JPA
+    - hibernate
 
 
 
